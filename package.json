@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "code": "^5.2.4",
     "core-js": "^3.6.5",
     "vue": "^3.0.0-0",
     "vue-router": "^4.0.0-0"
@@ -40,5 +41,17 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "description": "## Project setup ``` npm install ```",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gurrabergh/jsramverk-frontend.git"
+  },
+  "author": "Gustav Berg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gurrabergh/jsramverk-frontend/issues"
+  },
+  "homepage": "https://github.com/gurrabergh/jsramverk-frontend#readme"
 }

@@ -6,9 +6,10 @@
   </div>
 </template>
 <script>
+import auth from '../components/token.js'
 import Nav from './Nav.vue'
 export default {
-  name: 'About',
+  name: 'Logout',
   props: { },
   components: {
       Nav,
@@ -20,19 +21,12 @@ export default {
     }
   },
   mounted() {
-    this.getData();
+    this.logOut();
   },
   methods: {
-    getData() {
-      let that = this;
-      fetch("http://localhost:1337/reports/week/1")
-      .then(function(response) {
-          return response.json();
-      })
-      .then(function(result) {
-          that.text = result.data.text.content;
-          that.head = result.data.text.heading;
-      });
+    logOut() {
+      auth.token = null
+      this.$router.push('/login')
     }
   }
 }

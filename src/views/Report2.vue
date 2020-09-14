@@ -1,15 +1,13 @@
 <template>
   <Nav />
   <div class="about">
-  <span v-html="head"></span>
-  <p><span v-html="text"></span></p>
+    <span v-html="head"></span>
+    <p><span v-html="text"></span></p>
   </div>
 </template>
 <script>
 import Nav from './Nav.vue'
 export default {
-  name: 'About',
-  props: { },
   components: {
       Nav,
   },
@@ -25,7 +23,7 @@ export default {
   methods: {
     getData() {
       let that = this;
-      fetch("http://localhost:1337/reports/week/1")
+      fetch("http://localhost:1337/reports/week/2")
       .then(function(response) {
           return response.json();
       })
