@@ -25,23 +25,32 @@ test.describe("Me-frontend", function() {
         done();
     });
 
-    test.it("Test go to Report 2", function(done) {
-        // Use nav link to go to home page
-        browser.findElement(By.linkText("Report 2")).then(function(element) {
+    function goToNavLink(target) {
+        browser.findElement(By.linkText(target)).then(function(element) {
             element.click();
         });
-
-        // Check correct heading
+    }
+    
+    function matchUrl(target) {
+        browser.getCurrentUrl().then(function(url) {
+            assert.ok(url.endsWith(target));
+        });
+    }
+    
+    function assertH1(target) {
         browser.findElement(By.css("h1")).then(function(element) {
             element.getText().then(function(text) {
-                assert.equal(text, "me-api");
+                assert.equal(text, target);
             });
         });
+    }
 
-        // Check correct URL ending
-        browser.getCurrentUrl().then(function(url) {
-            assert.ok(url.endsWith("reports/week/2"));
-        });
+    test.it("Test go to Report 2", function(done) {
+        // try use nav link
+        goToNavLink("Report 2");
+
+        assertH1("me-api");
+        matchUrl("reports/week/2");
 
         done();
     });
