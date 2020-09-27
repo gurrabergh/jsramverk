@@ -1,4 +1,4 @@
-# mesida
+# mesida [![Build Status](https://travis-ci.org/gurrabergh/jsramverk-frontend.svg?branch=master)](https://travis-ci.org/gurrabergh/jsramverk-frontend)[![Build Status](https://scrutinizer-ci.com/g/gurrabergh/jsramverk-frontend/badges/build.png?b=master)](https://scrutinizer-ci.com/g/gurrabergh/jsramverk-frontend/build-status/master)
 
 ## Project setup
 ```
