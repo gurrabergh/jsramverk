@@ -7,12 +7,6 @@ node_js:
 addons:
   firefox: "49.0"
 
-before_install:
-- wget https://github.com/mozilla/geckodriver/releases/download/v0.27.0/geckodriver-v0.27.0-linux64.tar.gz
-- mkdir geckodriver
-- tar -xzf geckodriver-v0.27.0-linux64.tar.gz -C geckodriver
-- export PATH=$PATH:$PWD/geckodriver
-
 sudo: false
 
 git:
@@ -20,6 +14,7 @@ git:
 
 before_script:
     - npm install
+    - export PATH=$PATH:$PWD/geckodriver
 
 script:
     - npm test
