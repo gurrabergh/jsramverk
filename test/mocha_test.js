@@ -1,23 +1,26 @@
 const assert = require("assert");
 const test = require("selenium-webdriver/testing");
 const webdriver = require("selenium-webdriver");
+const firefox = require('selenium-webdriver/firefox');
 const By = webdriver.By;
 
 let browser;
 
-
 test.describe("Me-frontend", function() {
+    this.timeout(0);
 
-    test.beforeEach(function(done) {
-        this.timeout(20000);
-        browser = new webdriver.Builder().
-            withCapabilities(webdriver.Capabilities.firefox()).build();
+    beforeEach(function(done) {
+        browser = new webdriver.Builder()
+            .withCapabilities(webdriver.Capabilities.firefox())
+            .setFirefoxOptions(new firefox.Options().headless())
+            .forBrowser('firefox')
+            .build();
 
-        browser.get("https://me.gustavbergh.me/#/");
+        browser.get("https://me.gustavbergh.me/");
         done();
     });
 
-    test.afterEach(function(done) {
+    afterEach(function(done) {
         browser.quit();
         done();
     });
