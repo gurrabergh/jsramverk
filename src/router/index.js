@@ -1,9 +1,8 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import About from '../views/About.vue'
+import Report from '../views/Report.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
-import Report2 from '../views/Report2.vue'
 import Admin from '../views/Admin.vue'
 import Create from '../views/Create.vue'
 import Delete from '../views/Delete.vue'
@@ -18,19 +17,14 @@ const routes = [
     component: Home
   },
   {
-    path: '/reports/week/1',
+    path: '/reports/week/:week',
     name: 'Report 1',
-    component: About
+    component: Report
   },
   {
   path: '/login',
   name: 'Login',
   component: Login
-  },
-  {
-    path: '/reports/week/2',
-    name: 'Report 2',
-    component: Report2
   },
   {
     path: '/register',

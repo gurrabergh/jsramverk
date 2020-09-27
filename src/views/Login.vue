@@ -31,7 +31,7 @@ export default {
         usr: this.usr,
         psw: this.psw
       }
-      fetch('http://localhost:1337/login', {
+      fetch('https://me-api.gustavbergh.me/login', {
       method: 'POST',
       headers: {
       'Content-Type': 'application/json',

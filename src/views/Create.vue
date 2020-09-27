@@ -30,7 +30,7 @@ export default {
         heading: this.heading,
         content: this.content
       }
-      fetch('http://localhost:1337/reports', {
+      fetch('https://me-api.gustavbergh.me/reports', {
       method: 'POST',
       headers: {
       'Content-Type': 'application/json',
@@ -40,6 +40,7 @@ export default {
       })
       .then(response => response.json())
       .then(data => {
+        console.log(data)
         if (data.data.msg == 'success') {
           this.$router.push('/admin')
         }

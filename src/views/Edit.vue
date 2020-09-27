@@ -31,7 +31,7 @@ export default {
   methods: {
      getData() {
       let that = this;
-      fetch("http://localhost:1337/admin/edit/" + this.$route.params.id)
+      fetch("https://me-api.gustavbergh.me/admin/edit/" + this.$route.params.id)
       .then(function(response) {
           return response.json();
       })
@@ -47,7 +47,7 @@ export default {
         heading: this.heading,
         content: this.content
       }
-      fetch('http://localhost:1337/edit', {
+      fetch('https://me-api.gustavbergh.me/edit', {
       method: 'POST',
       headers: {
       'Content-Type': 'application/json',

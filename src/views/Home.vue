@@ -26,7 +26,7 @@ export default {
   methods: {
     getData() {
       let that = this;
-      fetch("http://localhost:1337/")
+      fetch("https://me-api.gustavbergh.me/")
       .then(function(response) {
           return response.json();
       })

@@ -34,7 +34,7 @@ export default {
   methods: {
     getTexts() {
       let that = this;
-      fetch('http://localhost:1337/admin')
+      fetch('https://me-api.gustavbergh.me/admin')
      .then(function(response) {
           return response.json();
       })
