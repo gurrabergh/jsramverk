@@ -16,7 +16,7 @@ test.describe("Me-frontend", function() {
             .forBrowser('firefox')
             .build();
 
-        browser.get("http://localhost:8080/#/");
+        browser.get("https://me.gustavbergh.me/");
         done();
     });
 
