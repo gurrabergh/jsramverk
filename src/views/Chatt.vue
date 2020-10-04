@@ -52,7 +52,7 @@ export default {
     submitted() {
         if (this.username !== '') {
             this.user = this.username;
-            socket.emit('chat message','"' + this.user + '" har anslutit till chatten');
+            socket.emit('chat message','chat message', time + ' "' + this.user + '" har anslutit till chatten');
         } 
     },
     sendMessage() {
