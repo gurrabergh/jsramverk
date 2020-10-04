@@ -63,7 +63,10 @@ export default {
                 }
     },
     sendEnter() {
-        socket.emit('chat message', this.user + ": " + this.msg);
+    var today = new Date();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+        socket.emit('chat message', time + " " + this.user + ": " + this.msg);
         this.msg = "";
         setTimeout(this.scrollDown, 100);
     },
