@@ -9,6 +9,7 @@ import Delete from '../views/Delete.vue'
 import Edit from '../views/Edit.vue'
 import auth from '../components/token.js'
 import Logout from '../views/Logout.vue'
+import Chatt from '../views/Chatt.vue'
 
 const routes = [
   {
@@ -70,6 +71,11 @@ const routes = [
     meta: {
       requiresAuth: true
     }
+  },
+  {
+    path: '/chatt',
+    name: 'Chatt',
+    component: Chatt,
   }
 ]
 
