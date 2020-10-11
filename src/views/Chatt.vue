@@ -3,7 +3,9 @@
 <h1>Chatt</h1>
   <div class="chatt" >
     <h3>Meddelanden:</h3>
-    <div id="all-messages" class="all-messages"></div>
+    <div id="all-messages" class="all-messages">
+        <p v-for="message in messages" v-bind:key="message.text">{{message.text}}</p>
+    </div>
 
     <p v-if="user !== ''"><strong>Skriv ett meddelande:</strong></p>
     <input v-on:keyup="sendMessage" id="new-message" class="new-message" v-if="user !== ''" v-model="msg"/>
@@ -19,10 +21,6 @@
 import io from 'socket.io-client';
 
 const socket = io('https://me-api.gustavbergh.me');
-
-socket.on('disconnect', function() {
-    console.info("Disconnected");
-});
 
 socket.on('connect', function() { 
     socket.on('chat message', function (message) {
@@ -42,17 +40,26 @@ export default {
         message: "",
         user: "",
         username: "",
-        msg: ""
+        msg: "",
+        messages: []
     }
   },
   components: {
       Nav,
   },
-    methods: {
+  mounted() {
+      this.getMessages()
+      setTimeout(this.scrollDown, 100);
+  },
+  methods: {
     submitted() {
         if (this.username !== '') {
+            var today = new Date();
+            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
             this.user = this.username;
-            socket.emit('chat message','chat message', time + ' "' + this.user + '" har anslutit till chatten');
+            socket.emit('chat message', time + ' "' + this.user + '" har anslutit till chatten');
+            setTimeout(this.scrollDown, 100);
         } 
     },
     sendMessage() {
@@ -73,8 +80,15 @@ export default {
     scrollDown() {
         var element = document.getElementsByClassName("all-messages")[0];
         element.scrollTop = element.scrollHeight;
-    }
+    },
+    getMessages() {
+      fetch('https://me-api.gustavbergh.me/chat')
+      .then(response => response.json())
+      .then(data => {
+          this.messages = data
+      });
   }
+  },
 }
 </script>
 <style>
