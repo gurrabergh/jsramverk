@@ -1,5 +1,4 @@
 <template>
-  <Nav />
 <h1>Chatt</h1>
   <div class="chatt" >
     <h3>Meddelanden:</h3>
@@ -20,7 +19,7 @@
 <script>
 import io from 'socket.io-client';
 
-const socket = io('https://me-api.gustavbergh.me');
+const socket = io('http://127.0.0.1:1337/');
 
 socket.on('connect', function() { 
     socket.on('chat message', function (message) {
@@ -32,8 +31,6 @@ socket.on('connect', function() {
         allMessages.appendChild(addedMessage);
     });
 });
-
-import Nav from './Nav.vue'
 export default {
   data() {
     return {
@@ -43,9 +40,6 @@ export default {
         msg: "",
         messages: []
     }
-  },
-  components: {
-      Nav,
   },
   mounted() {
       this.getMessages()
@@ -82,7 +76,7 @@ export default {
         element.scrollTop = element.scrollHeight;
     },
     getMessages() {
-      fetch('https://me-api.gustavbergh.me/chat')
+      fetch('http://127.0.0.1:1337/chat')
       .then(response => response.json())
       .then(data => {
           this.messages = data
